@@ -23,18 +23,27 @@
         $('#usage').text(thermostat.usage);
         $('#up').on('click', function() {
           thermostat.up();
+          thermostat.checkUsage();
           $('#temperature').text(thermostat.temperature);
+          $('#usage').text(thermostat.usage);
         })
         $('#down').on('click', function() {
           thermostat.down();
+          thermostat.checkUsage();
           $('#temperature').text(thermostat.temperature);
+          $('#usage').text(thermostat.usage);
         })
         $('#reset').on('click', function() {
           thermostat.reset();
+          thermostat.checkUsage();
           $('#temperature').text(thermostat.temperature);
+          $('#usage').text(thermostat.usage);
         })
         $('#PSMon').on('click', function() {
           thermostat.turnPowerSavingOn();
+          thermostat.checkUsage();
+          $('#temperature').text(thermostat.temperature);
+          $('#usage').text(thermostat.usage);
         })
         $('#PSMoff').on('click', function() {
           thermostat.turnPowerSavingOff();

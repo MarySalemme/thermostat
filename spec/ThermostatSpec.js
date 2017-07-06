@@ -34,7 +34,7 @@ describe("Thermostat", function() {
       thermostat.down()
       expect(thermostat.temperature).toEqual(19)
     });
-    
+
     it ('cannot go below minimum temperature', function() {
       thermostat.temperature = 10;
       expect(function() {thermostat.down()}).toThrowError('Cannot go below minimum')
@@ -63,9 +63,10 @@ describe("Thermostat", function() {
 
   describe('turnPowerSavingOn', function() {
     it("turns the power saving mode on", function() {
-      thermostat.turnPowerSavingOff()
-      thermostat.turnPowerSavingOn()
-      expect(thermostat.powerSavingMode).toEqual(true)
+      thermostat.turnPowerSavingOff();
+      thermostat.turnPowerSavingOn();
+      expect(thermostat.powerSavingMode).toEqual(true);
+      expect(thermostat.temperature).toEqual(25);
     });
   });
 
