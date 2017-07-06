@@ -9,14 +9,36 @@
     <section>
       <p id="temperature"></p>
       <p id="usage"></p>
+    </section>
+    <section>
+      <h1>Current temperature outside: <span id="current-temperature">20</span></h1>
+        <form id='select_city'>
+          <input id='current_city' type='text' placeholder='Enter your city'></input>
+          <input type='submit'></input>
+        </form>
+    </section>
+    <section>
       <button id="up" type ="button">Turn temp up</button>
       <button id="down" type ="button">Turn temp down</button>
       <button id="reset" type ="button">Reset temp</button>
       <button id="PSMon" type ="button">PSM on</button>
       <button id="PSMoff" type ="button">PSM off</button>
-  </section>
+    </section>
     <script src="../src/Thermostat.js" type="text/javascript"></script>
     <script>
+      function displayWeather(city) {
+        var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
+        var key = '&APPID=2c10eace37423785413404c7312d300a';
+        var unit = '&units=metric';
+        $.get(url + key + unit, function(data) {
+          $('#current-temperature').text(data.main.temp);
+        })
+      }
+      $('#select_city').submit(function(event) {
+        event.preventDefault();
+        var city = $('#current_city').val();
+        displayWeather(city);
+      })
       $(document).ready(function(){
         var thermostat = new Thermostat();
         $('#temperature').text(thermostat.temperature);
